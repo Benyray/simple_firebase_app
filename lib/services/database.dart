@@ -4,15 +4,15 @@ import 'package:simple_firebase_app/models/brew.dart';
 class DatabaseService {
 
   final String uid;
-  DatabaseService({required this.uid});
+  DatabaseService(this.uid);
 
   // collection reference
   final CollectionReference brewCollection = FirebaseFirestore.instance.collection('brews');
 
-  Future updateUserData(String sugars, String name, int strength) async {
+  Future updateUserData(String name, String sugars, int strength) async {
     return await brewCollection.doc().set({
-      'sugars': sugars,
       'name': name,
+      'sugars': sugars,
       'strength': strength,
     });
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_firebase_app/models/brew.dart';
+import 'package:simple_firebase_app/pages/home/settings_form.dart';
 import 'package:simple_firebase_app/services/auth.dart';
 import 'package:simple_firebase_app/services/database.dart';
 import 'package:provider/provider.dart';
@@ -17,13 +18,13 @@ class Home extends StatelessWidget {
       showModalBottomSheet(context: context, builder: (context) {
         return Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-          child: Text('bottom sheet'),
+          child: SettingsForm(),
         );
       });
     }
 
     return StreamProvider<List<Brew>>.value(
-      value: DatabaseService(uid:'').brews, 
+      value: DatabaseService('').brews, 
       initialData: [],
       child: Scaffold(
         backgroundColor: Colors.brown[50],
