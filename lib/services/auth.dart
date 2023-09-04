@@ -15,7 +15,6 @@ class AuthService {
   // auth change user stream
   Stream<Person?> get user {
     return _auth.authStateChanges()
-    //.map((User user) => _userFromFirebaseUser(user));
     .map(_userFromFirebaseUser);
   }
 
@@ -54,7 +53,7 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
       //create a new document for the user with the uid
-      await DatabaseService(user!.uid).updateUserData('0', 'new member', 100);
+      await DatabaseService(user!.uid).updateUserData('new member', '0 sugars', 100);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
