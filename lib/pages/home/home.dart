@@ -17,44 +17,44 @@ class Home extends StatelessWidget {
     void _showSettingsPanel() {
       showModalBottomSheet(context: context, builder: (context) {
         return Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-          child: SettingsForm(),
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+          child: const SettingsForm(),
         );
       });
     }
 
     return StreamProvider<List<Brew>>.value(
       value: DatabaseService('').brews, 
-      initialData: [],
+      initialData: const [],
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
-          title: Text('Brew Crew'),
+          title: const Text('Brew Crew'),
           backgroundColor: Colors.brown[400],
           elevation: 0.0, 
           actions: [
             TextButton.icon(
-              icon: Icon(Icons.person, color: Colors.white,),
-              label: Text('logout', style: TextStyle(color: Colors.white),),
+              icon: const Icon(Icons.person, color: Colors.white,),
+              label: const Text('logout', style: TextStyle(color: Colors.white),),
               onPressed: () async {
                 await _auth.signOut();
               },
           ),
           TextButton.icon(
-          icon: Icon(Icons.settings, color: Colors.white,), 
-          label: Text('Settings', style: TextStyle(color: Colors.white),),
+          icon: const Icon(Icons.settings, color: Colors.white,), 
+          label: const Text('Settings', style: TextStyle(color: Colors.white),),
           onPressed: () => _showSettingsPanel(),
           ), 
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/coffee_bg.png'),
             fit: BoxFit.cover,
           )
         ),
-        child: BrewList()
+        child: const BrewList()
       ),
     ),
    );

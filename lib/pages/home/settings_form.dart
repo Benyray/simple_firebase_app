@@ -38,18 +38,18 @@ class _SettingsFormState extends State<SettingsForm> {
               key: _formKey,
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Update your brew settings.',
                     style: TextStyle(fontSize: 18.0),
                   ),
-                  SizedBox(height: 20.0,),
+                  const SizedBox(height: 20.0,),
                   TextFormField(
                     initialValue: userData!.name,
                     decoration: TextInputDecoration.copyWith(hintText: 'name'),
                     validator: (val) => val!.isEmpty ? 'Please enter a name' : null,
                     onChanged: (val) => setState(() => _currentName = val),
                   ),
-                  SizedBox(height: 20.0,),
+                  const SizedBox(height: 20.0,),
                   // dropbox
                   DropdownButtonFormField(
                     value: _currentSugars ?? userData.sugars,
@@ -76,7 +76,7 @@ class _SettingsFormState extends State<SettingsForm> {
                   // update button
                   ElevatedButton(
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.pink)),
-                    child: Text(
+                    child: const Text(
                       'Update',
                       style: TextStyle(color: Colors.white),
                     ),
@@ -94,7 +94,7 @@ class _SettingsFormState extends State<SettingsForm> {
                 ],)
               );
         } else {
-          return Loading();
+          return const Loading();
         }
       }
     );

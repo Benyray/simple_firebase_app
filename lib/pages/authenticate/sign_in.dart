@@ -6,7 +6,7 @@ import 'package:simple_firebase_app/shared/loading.dart';
 class SignIn extends StatefulWidget {
 
   final Function toggleView;
-  SignIn({super.key, required this.toggleView}); 
+  const SignIn({super.key, required this.toggleView}); 
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -25,17 +25,17 @@ String error = '';
 
   @override
   Widget build(BuildContext context) {
-    return loading ? Loading() : Scaffold(
+    return loading ? const Loading() : Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sing in to Brew Crew'),
+        title: const Text('Sing in to Brew Crew'),
         actions: [
           TextButton.icon(
             style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),
-            icon: Icon(Icons.person),
-            label: Text('Register'),
+            icon: const Icon(Icons.person),
+            label: const Text('Register'),
             onPressed: () {
               widget.toggleView();
             },
@@ -43,11 +43,11 @@ String error = '';
         ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
           key: _formKey,
           child: Column(children: [
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             TextFormField(
               decoration: TextInputDecoration,
               validator: (val) => val!.isEmpty ? 'Enter an email' : null,
@@ -55,7 +55,7 @@ String error = '';
                   setState(() => email = val);
               },
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             TextFormField(
               decoration: TextInputDecoration.copyWith(hintText: 'password'),
               validator: (val) => val!.length < 6 ? 'Enter password 6+ chars long' : null,
@@ -64,10 +64,10 @@ String error = '';
                  setState(() => password = val);
               },
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             ElevatedButton(
             //  style: ButtonStyle(backgroundColor: MaterialStateColor().green),
-              child: Text('Sign In', style: TextStyle(color: Colors.white),),
+              child: const Text('Sign In', style: TextStyle(color: Colors.white),),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   setState(() => loading = true);
@@ -81,10 +81,10 @@ String error = '';
                 }
               },
             ),
-            SizedBox(height: 12.0,),
+            const SizedBox(height: 12.0,),
             Text(
               error,
-              style: TextStyle(color: Colors.red, fontSize: 14.0),
+              style: const TextStyle(color: Colors.red, fontSize: 14.0),
             ),
           ]),
           ),

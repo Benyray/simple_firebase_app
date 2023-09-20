@@ -5,7 +5,7 @@ import 'package:simple_firebase_app/shared/loading.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
-  Register({super.key, required this.toggleView});
+  const Register({super.key, required this.toggleView});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -22,17 +22,17 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return loading ? Loading() : Scaffold(
+    return loading ? const Loading() : Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sign up to Brew Crew'),
+        title: const Text('Sign up to Brew Crew'),
         actions: [
           TextButton.icon(
             style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.white)),
-            icon: Icon(Icons.person),
-            label: Text('Sign in'),
+            icon: const Icon(Icons.person),
+            label: const Text('Sign in'),
             onPressed: () {
               widget.toggleView();
             },
@@ -40,11 +40,11 @@ class _RegisterState extends State<Register> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
           key: _formKey,
           child: Column(children: [
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             TextFormField(
               decoration: TextInputDecoration,
               validator: (val) => val!.isEmpty ? 'Enter an email' : null,
@@ -52,7 +52,7 @@ class _RegisterState extends State<Register> {
                   setState(() => email = val);
               },
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             TextFormField(
               decoration: TextInputDecoration.copyWith(hintText: 'password'),
               validator: (val) => val!.length < 6 ? 'Enter password 6+ chars long' : null,
@@ -61,10 +61,10 @@ class _RegisterState extends State<Register> {
                  setState(() => password = val);
               },
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             ElevatedButton(
             //  style: ButtonStyle(backgroundColor: MaterialStateColor().green),
-              child: Text('Register', style: TextStyle(color: Colors.white),),
+              child: const Text('Register', style: TextStyle(color: Colors.white),),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   setState(() => loading = true);
@@ -78,10 +78,10 @@ class _RegisterState extends State<Register> {
                 }
               },
             ),
-            SizedBox(height: 12.0,),
+            const SizedBox(height: 12.0,),
             Text(
               error,
-              style: TextStyle(color: Colors.red, fontSize: 14.0),
+              style: const TextStyle(color: Colors.red, fontSize: 14.0),
             ),
           ]),
           ),
